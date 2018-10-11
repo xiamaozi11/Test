@@ -91,7 +91,9 @@ history = LossHistory()
 filepath="weights-improvement-{epoch:02d}-{val_acc:.2f}.hdf5"
 #checkpoint= ModelCheckpoint(filepath, monitor='val_acc', verbose=1, save_best_only=True, mode='max')
 checkpoint = ModelCheckpoint(filepath)
-
+#打印损失
+#model.fit(x_train,y_train, batch_size = BATCH_SIZE, epochs= NB_EPOCH, verbose= VERBOSE, validation_split= VALIDATION_SPLIT,callbacks = [history])
+#保存checkpoint点模型
 model.fit(x_train,y_train, batch_size = BATCH_SIZE, epochs= NB_EPOCH, verbose= VERBOSE, validation_split= VALIDATION_SPLIT,callbacks = [checkpoint])
 score = model.evaluate(x_test,y_test,verbose=VERBOSE)
 
